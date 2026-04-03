@@ -6,3 +6,12 @@ body {
 a {
   color: #00B7FF;
 }
+
+.vh-25{
+  height: 25vh;
+}
+
+.min-vh-50{
+  min-height: 50vh;
+}
+
