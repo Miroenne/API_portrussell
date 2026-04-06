@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 /* Catway's schema for the needed fields to create a catway and save it in the database */
 const Catway = new Schema({
     catwayNumber: {
-        type: Number,
+        type: String,
         unique: true,
         trim : true,
         required: [true, 'Le numéro du catway est requis']

@@ -6,7 +6,29 @@ const cookie = require('cookie-parser');
 
 
 
+exports.create = async (req, res) => {
+    const tempUser = ({
+        userName        : req.body.userName,
+        email           : req.body.email,
+        password        : req.body.password,
+        accessLevel     : req.body.accessLevel
+    }); 
 
+    try{
+        let user = await User.create(tempUser);
+        res.status(200).json(user);
+    }catch(error){
+        console.error("Erreur create user: ", error);
+
+        res.status(400).json({
+        message             : "Erreur lors de la création de l'utilisateur",
+            name            : error.name,
+            code            : error.code,
+            errorMessage    : error.message,
+            errors          : error.errors
+        });
+    }
+}
 
 
 
@@ -14,7 +36,7 @@ exports.login = async (req, res, next) => {
     const {email, password} = req.body;
 
     try {
-        const user = await User.findOne({email : email}, '-__V - createAt -updateAt');
+        const user = await User.findOne({email : email}, '-__V -createAt -updateAt');
 
         if(user){
             bcrypt.compare(password, user.password, (err, response) => {
