@@ -1,5 +1,14 @@
 const Catway = require('../models/catway');
 
+exports.getAll = async (req, res, next) => {
+    try{
+        const catways = await Catway.find();
+        res.locals.catways = catways;
+        next();
+    }catch(error){
+      next(error);  
+    };
+}
 
 exports.create = async (req, res) => {
     const tempCatway =({
@@ -10,7 +19,7 @@ exports.create = async (req, res) => {
 
     try{
         let catway = await Catway.create(tempCatway);
-        res.render("pages/catways", { showConfirmModal : true});
+        res.redirect('/confirm?objectName=Catway&redirect=/catways');
     }catch(error){
         console.error("Erreur create catway: ", error);
 

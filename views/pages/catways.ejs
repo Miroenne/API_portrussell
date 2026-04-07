@@ -11,7 +11,7 @@
     <header>
         <%- include('../partials/menu') %>
     </header>
-    <p>bienvenue sur la page de gestion des catways</p>
+    
     <main>
         <%- include('../partials/addModal', {
             action : "http://localhost:3000/catways",
@@ -35,8 +35,21 @@
             display : "d-none",
             confirmMessage : "Le catway a bien été ajouté."
         }) %>
-
-
+        <div class="container-fluid mt-5">
+            <div class="row justify-content-evenly">
+            <% if (catways && catways.length > 0) { %>
+                <% catways.forEach(catway => { %>
+                    <%- include('../partials/catwayCard',{
+                        catwayNumber : catway.catwayNumber,
+                        catwayType :  catway.catwayType,
+                        catwayState : catway.catwayState
+                    }) %>
+                <% }) %>
+            <% } else { %>
+                <p>Aucun catway trouvé.</p>
+            <% } %>
+            </div>            
+        </div>        
     </main>
     <% if (showConfirmModal) { %>
         <script>

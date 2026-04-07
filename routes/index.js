@@ -5,6 +5,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 const {marked} = require('marked');
 
+const serviceCatways = require('../services/catways');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('pages/login', {error: null});
@@ -46,8 +48,19 @@ router.get('/users', function(req, res, next){
   res.render('pages/users')
 });
 
-router.get('/catways', function(req, res, next){
-  res.render('pages/catways', {showConfirmModal : false})
+router.get('/catways', serviceCatways.getAll, function(req, res, next){
+  res.render('pages/catways', {showConfirmModal : false, catways: res.locals.catways})
 });
+
+router.get('/confirm', function(req, res, next){
+  const objectName = req.query.objectName;
+  const path = req.query.redirect;
+
+  res.render('pages/confirm',
+    {objectName: objectName,
+      path : path
+    }
+  )
+})
 
 module.exports = router;
