@@ -1,0 +1,52 @@
+<!-- Button trigger modal -->
+ <div class="<%= textPosition %>">
+    <button type="button" class="btn btn-success <%= margin %> w-auto" data-bs-toggle="modal" data-bs-target="#<%= modalId %>">
+        <%= title %>
+    </button>
+    <form action="<%= deleteAction %>" method="<%= method %>" enctype="application/x-www-form-urlencoded" class=" <%= secondFormDisplay %> w-50">
+        <input type="hidden" name="_method" value="<%= overrideDeleteMethod %>">  
+        <input type="submit" class="btn btn-danger" value="Supprimer">       
+    </form>
+ </div>
+
+
+<!-- Adding Modal -->
+<div class="modal fade" id="<%= modalId %>" tabindex="-1" aria-labelledby="<%= modalId %>Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="<%= modalId %>Label"><%= title %></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="<%= action %>" method="<%= method %>" enctype="application/x-www-form-urlencoded">
+                    <input type="hidden" name="_method" value="<%= overrideUpdateMethod %>">
+                    <div class="mb-3">
+                        <label for="<%= id1 %>" class="form-label"><%= label1 %></label>
+                        <input type="<%= type1 %>" class="form-control " <%= write1 %> id="<%= id1 %>" name="<%= id1 %>" value="<%= value1 %>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="<%= id2 %>" class="form-label"><%= label2 %></label>
+                        <input type="<%= type2 %>" class="form-control " <%= write2 %> id="<%= id2 %>" name="<%= id2 %>" value="<%= value2 %>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="<%= id3 %>" class="form-label"><%= label3 %></label>
+                        <input type="<%= type3 %>" class="form-control " <%= write3 %> id="<%= id3 %>" name="<%= id3 %>" value="<%= value3 %>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="<%= id4 %>" class="form-label <%= inputDisplay %>"><%= label4 %></label>
+                        <input type="<%= type4 %>" class="form-control <%= inputDisplay %> " <%= write4 %> id="<%= id4 %>" name="<%= id4 %>" value="<%= value4 %>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="<%= id5 %>" class="form-label <%= inputDisplay %>"><%= label5 %></label>
+                        <input type="<%= type5 %>" class="form-control <%= inputDisplay %> " <%= write5 %> id="<%= id5 %>" name="<%= id5 %>" value="<%= value5 %>">
+                    </div>
+                    <div class="text-center pt-3">
+                        <input type="submit" class="btn btn-primary me-5" value="Valider">  
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button> 
+                    </div>                                                         
+                </form>
+            </div>               
+        </div>            
+    </div>
+</div>

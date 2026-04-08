@@ -4,4 +4,45 @@
         <p class="card-text">Catway de type : <%= catwayType %></p>
         <p class="card-text">État du catway : <%= catwayState %></p>
     </div>
+    <div class="card-footer">
+        <%- include('../partials/addUpdateModal', {
+            modalId : "editModal-"+catwayNumber,
+            textPosition : "text-center row justify-content-center",
+            deleteAction : "DELETE",
+            secondFormDisplay : "d-inline",
+            overrideDeleteMethod : "http://localhost:3000/catways/" + catwayNumber,
+            action : "http://localhost:3000/catways/" + catwayNumber,
+            method : "POST",
+            overrideUpdateMethod : "PUT",
+            value1: catwayNumber,
+            value2: catwayType,
+            value3: catwayState,
+            value4 : undefined,
+            value5: undefined,
+            title : "Modifier",
+            label1: "Numéro de catway",
+            type1: "text",
+            id1 : "catwayNumber",
+            write1 : "disabled",
+            label2: "Type de catway",
+            type2: "text",
+            id2: "catwayType",
+            write2 : "disabled",
+            label3: "État du catway",
+            type3: "text",
+            id3: "catwayState",
+            write3 : undefined,
+            label4 : undefined,
+            type4: undefined,
+            id4 : undefined,
+            write4 : undefined,
+            label5: undefined,
+            type5: undefined,
+            id5: undefined,
+            write5 : undefined,
+            inputDisplay : "d-none",
+            margin: undefined,
+            confirmMessage : "Le catway a bien été modifié."
+        }) %>        
+    </div>
 </div>

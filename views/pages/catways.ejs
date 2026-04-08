@@ -13,26 +13,43 @@
     </header>
     
     <main>
-        <%- include('../partials/addModal', {
+        <%- include('../partials/addUpdateModal', {
+            modalId: 'addmodal',
+            textPosition : undefined,
+            deleteAction : undefined,
+            overrideDeleteMethod : undefined,
+            secondFormDisplay : "d-none",
             action : "http://localhost:3000/catways",
-            method : "POST",
+            method : "POST",            
+            overrideUpdateMethod : undefined,
+            value1: undefined,
+            value2: undefined,
+            value3: undefined,
+            value4 : undefined,
+            value5: undefined,
             title : "Ajouter un catway",
             label1: "Numéro de catway",
             type1: "text",
             id1 : "catwayNumber",
+            write1 : undefined,
             label2: "Type de catway",
             type2: "text",
             id2: "catwayType",
+            write2 : undefined,
             label3: "État du catway",
             type3: "text",
             id3: "catwayState",
+            write3 : undefined,
             label4 : undefined,
             type4: undefined,
             id4 : undefined,
+            write4 : undefined,
             label5: undefined,
             type5: undefined,
             id5: undefined,
-            display : "d-none",
+            write5 : undefined,
+            inputDisplay : "d-none",
+            margin: "mt-5",
             confirmMessage : "Le catway a bien été ajouté."
         }) %>
         <div class="container-fluid mt-5">
